@@ -1,66 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-}
-
-@theme {
-  --color-background: #ffffff;
-  --color-foreground: #1a1a1a;
-  
-  --color-card: #f9f9f9;
-  --color-card-foreground: #1a1a1a;
-  
-  --color-primary: #3b82f6; /* Trustworthy Blue */
-  --color-primary-foreground: #ffffff;
-  
-  --color-secondary: #f3f4f6;
-  --color-secondary-foreground: #1a1a1a;
-  
-  --color-muted: #f3f4f6;
-  --color-muted-foreground: #6b7280;
-  
-  --color-accent: #eff6ff;
-  --color-accent-foreground: #1a1a1a;
-  
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-input: rgba(0, 0, 0, 0.05);
-  --color-ring: #3b82f6;
-
-  --radius-lg: 0.75rem;
-  --radius-md: 0.5rem;
-  --radius-sm: 0.25rem;
-
-  --font-sans: "Inter", sans-serif;
+  --background: #111111;
+  --foreground: #ededed;
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow: hidden;
 }
 
-.sleek-glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+/* Custom Scrollbar for Dark Mode */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.sleek-text-gradient {
-  background: linear-gradient(135deg, #1a1a1a 40%, #6b7280);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.sleek-border {
-  border: 1px solid rgba(255, 255, 255, 0.05);
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
 }
 
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
-  border-color: rgba(212, 175, 55, 0.2);
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base Markdown Styles */
+.markdown-content p {
+  margin-bottom: 0.75rem;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+/* Force Hand Cursor on all interactive elements */
+button, 
+a,
+.clickable,
+.cursor-pointer,
+[role="button"],
+[onclick],
+[onClick] {
+  cursor: pointer !important;
+}
+
+/* Preserve text selection cursor for inputs */
+textarea,
+input,
+[contenteditable="true"] {
+  cursor: text !important;
 }
